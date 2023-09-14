@@ -59,7 +59,7 @@ public class Util {
 
 
 
-    public int[] ConvertirArregloSaI(String arreglo[]){
+    public int[] ConvertirArregloSaI(String[] arreglo){
 
         int[] cantidadesInt = new int[arreglo.length];
 
@@ -86,7 +86,7 @@ public class Util {
         }
     }
 
-    public  String Encriptar(String password) {
+    public static String Encriptar(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] passwordBytes = password.getBytes();

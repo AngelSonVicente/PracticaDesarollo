@@ -1,4 +1,6 @@
-package Datos;
+package Datos.QuerySubir;
+
+import Datos.ConexionBD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,6 +37,8 @@ public class Subir {
             return -1;
         }
     }
+
+
 
 
 

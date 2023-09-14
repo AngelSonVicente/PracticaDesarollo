@@ -1,4 +1,4 @@
-<%--
+<%@ page import="DatosBD.Usuario" %><%--
   Created by IntelliJ IDEA.
   User: MSI
   Date: 13/09/2023
@@ -11,8 +11,17 @@
     <title>Modulo Gerente</title>
 </head>
 <body>
+<%
+    Usuario gerente = (Usuario) session.getAttribute("Gerente");
 
-<h1>Hollaaa Gerente</h1>
+%>
+<h1>Modulo Gerente</h1>
+
+<h2>
+<a href="CrearUsuario.jsp">Crear Usuario</a>
+<a href="CrearCuenta.jsp">Crear Cuenta</a>
+
+</h2>
 
 </body>
 </html>

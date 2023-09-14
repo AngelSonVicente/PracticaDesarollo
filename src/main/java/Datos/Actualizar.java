@@ -1,5 +1,7 @@
 package Datos;
 
+import Datos.QuerySubir.Subir;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
