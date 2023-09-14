@@ -1,5 +1,6 @@
 package Web;
 
+import Datos.Buscar;
 import Datos.Subir.CrearYasociarCuenta;
 import DatosBD.Cuenta;
 import jakarta.servlet.RequestDispatcher;
@@ -17,6 +18,7 @@ public class CrearCuenta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Buscar buscar = new Buscar();
         String CodigoUsuario=request.getParameter("CodigoCliente");
         String fecha=request.getParameter("fecha");
 
@@ -27,6 +29,8 @@ public class CrearCuenta extends HttpServlet {
 
 
         }
+
+        if(buscar.ExisteUsuario(CodigoUsuario) && !CodigoUsuario.equals("101")){
 
         CrearYasociarCuenta crear = new CrearYasociarCuenta();
 
@@ -42,6 +46,13 @@ public class CrearCuenta extends HttpServlet {
             request.getRequestDispatcher("CrearCuenta.jsp").forward(request,response);
 
         }
+
+        }else{
+        request.setAttribute("error", "El Usuario No existe");
+            request.getRequestDispatcher("CrearCuenta.jsp").forward(request,response);
+
+        }
+
 
 
     }

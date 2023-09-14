@@ -61,6 +61,32 @@ public class Buscar {
 
 
 
+    public boolean ExisteUsuario(String id) {
+        boolean existe = false;
+        String Nombre = "";
+
+        String sql = "SELECT * FROM usuario WHERE codigo = ?";
+
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                existe=true;
+            }
+
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println("Error al realizar la consulta" + e.getMessage());
+
+        }
+
+        System.out.println(sql);
+        return existe;
+    }
 
 
 

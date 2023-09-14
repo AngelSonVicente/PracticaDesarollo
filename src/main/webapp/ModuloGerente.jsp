@@ -17,9 +17,9 @@
 %>
 <h1>Modulo Gerente</h1>
 
-<h2>
-<a href="CrearUsuario.jsp">Crear Usuario</a>
-<a href="CrearCuenta.jsp">Crear Cuenta</a>
+<br>
+    <a href="CrearUsuario.jsp">Crear Usuario</a></br></br>
+    <a href="CrearCuenta.jsp">Crear Cuenta</a></br></br>
 
 </h2>
 
