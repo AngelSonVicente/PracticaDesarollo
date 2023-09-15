@@ -89,7 +89,6 @@ public class Buscar {
     }
 
 
-
         public String ObtenerContra( String usuario){
             String dato="";
         dato=getDato("usuario","codigo","password",usuario);
