@@ -89,7 +89,8 @@ Turno: <select name="turno">
 Codigo: <%=usuariot3.getCodigo()%> </br> </br>
 Nombre: <input type="text" name="nombre" value="<%=usuariot3.getNombre()%>"></br> </br>
 Direccion: <input type="text" name="direccion" value="<%=usuariot3.getDireccion()%>"></br> </br>
-contraseña <input type="text" name="contra">
+    Para conservar la contraseña deje en blanco el campo contraseña </br>
+contraseña <input type="text" name="contra"></br> </br>
 DPI: <input type="text" name="dpi" value="<%=usuariot3.getDpi()%>"></br> </br>
 
 <%

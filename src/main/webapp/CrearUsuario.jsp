@@ -13,6 +13,7 @@
 
 <%
     Usuario gerente = (Usuario) session.getAttribute("Gerente");
+
 %>
 <c:if   test="${not empty error}">
     <p  style="color: red">${error}</p>
