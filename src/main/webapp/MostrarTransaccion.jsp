@@ -15,6 +15,18 @@
 
   Transaccion transaccion = (Transaccion) request.getAttribute("transaccion");
 
+
+String accion="";
+String accion2="";
+if(transaccion.getTipo().equals("Credito")){
+    accion="Depositar";
+    accion2="Depositos";
+}
+if(transaccion.getTipo().equals("Debito")){
+    accion="Retirar";
+    accion2="Retiros";
+}
+
 %>
 
 <%if(transaccion!=null){%>
@@ -28,8 +40,10 @@ Tipo de Transaccion: <%=transaccion.getTipo()%> </br>
 Hecha el : <%=transaccion.getFecha()%>  <%=transaccion.getHora()%></br>
 Monto: <%=transaccion.getMonto()%>
 
-<form action="Depositar.jsp">
-    <input type="submit" value="Seguir haciendo depositos">
+
+
+<form action="<%=accion%>.jsp">
+    <input type="submit" value="Seguir haciendo <%=accion2%>">
 </form>
 <form action="ModuloCajero.jsp">
     <input type="submit" value="Volver al Modulo">

@@ -1,5 +1,6 @@
 package Datos.QueryActualizar;
 
+import Datos.TipoTransaccion;
 import Datos.Util;
 
 import java.sql.Connection;
@@ -14,11 +15,18 @@ public class SaldoUsuario {
         this.connection = connection;
     }
 
-    public float ActualizarSaldo(String CodigoCuenta, float MontoaAgregar) throws SQLException {
-        String sql = "UPDATE cuenta SET saldo = saldo + ? WHERE codigo = ? ";
+    public float ActualizarSaldo(String CodigoCuenta, float MontoaAgregar, TipoTransaccion tipo) throws SQLException {
+        String sql = "";
+        if (tipo==TipoTransaccion.Credito) {
 
+            sql="UPDATE cuenta SET saldo = saldo + ? WHERE codigo = ?";
+        }
+        if(tipo==TipoTransaccion.Debito){
+            sql="UPDATE cuenta SET saldo = saldo - ? WHERE codigo = ?";
 
-        System.out.println(sql);
+        }
+            System.out.println(sql);
+
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setFloat(1, MontoaAgregar);
             preparedStatement.setString(2, CodigoCuenta);

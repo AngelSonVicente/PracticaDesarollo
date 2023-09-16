@@ -29,7 +29,7 @@ public class SubirTransaccion {
             SaldoUsuario actualizarsaldo = new SaldoUsuario(conexion);
             Datos.QuerySubir.Transaccion transaccion = new Datos.QuerySubir.Transaccion(conexion);
 
-            float Saldofinal = actualizarsaldo.ActualizarSaldo(CodigoCuenta,monto);
+            float Saldofinal = actualizarsaldo.ActualizarSaldo(CodigoCuenta,monto, tipo );
 
             int IDtransaccion=transaccion.SubirTransaccion(CodigoCuenta,tipo.name(),monto,CodigoCajero,Saldofinal);
 

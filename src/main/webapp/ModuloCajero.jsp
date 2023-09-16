@@ -16,6 +16,7 @@
 <h2>
   <br>
   <a href="Depositar.jsp">Hacer Deposito</a></br></br>
+  <a href="Retirar.jsp">Hacer Retiro</a></br></br>
 
 
 
