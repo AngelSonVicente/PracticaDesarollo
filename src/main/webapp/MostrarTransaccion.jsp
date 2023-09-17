@@ -1,10 +1,4 @@
-<%@ page import="DatosBD.Transaccion" %><%--
-  Created by IntelliJ IDEA.
-  User: MSI
-  Date: 15/09/2023
-  Time: 11:39 p. m.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="DatosBD.Transaccion" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,23 +7,23 @@
 <body>
 <%
 
-  Transaccion transaccion = (Transaccion) request.getAttribute("transaccion");
+    Transaccion transaccion = (Transaccion) request.getAttribute("transaccion");
 
 
-String accion="";
-String accion2="";
-if(transaccion.getTipo().equals("Credito")){
-    accion="Depositar";
-    accion2="Depositos";
-}
-if(transaccion.getTipo().equals("Debito")){
-    accion="Retirar";
-    accion2="Retiros";
-}
+    String accion = "";
+    String accion2 = "";
+    if (transaccion.getTipo().equals("Credito")) {
+        accion = "Depositar";
+        accion2 = "Depositos";
+    }
+    if (transaccion.getTipo().equals("Debito")) {
+        accion = "Retirar";
+        accion2 = "Retiros";
+    }
 
 %>
 
-<%if(transaccion!=null){%>
+<%if (transaccion != null) {%>
 
 <h1>Transaccion Hecha Con Exito</h1></br></br>
 
@@ -41,16 +35,12 @@ Hecha el : <%=transaccion.getFecha()%>  <%=transaccion.getHora()%></br>
 Monto: <%=transaccion.getMonto()%>
 
 
-
 <form action="<%=accion%>.jsp">
     <input type="submit" value="Seguir haciendo <%=accion2%>">
 </form>
 <form action="ModuloCajero.jsp">
     <input type="submit" value="Volver al Modulo">
 </form>
-
-
-
 
 
 <%}%>

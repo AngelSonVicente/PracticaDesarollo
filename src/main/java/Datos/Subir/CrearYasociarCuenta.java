@@ -32,7 +32,7 @@ public class CrearYasociarCuenta {
             int IDCuenta = crearcuenta.crearCuenta(CodigoCliente,FechaCreacion) ;
 
             codigo = IDCuenta;
-            asociar.asociarCuenta(CodigoCliente,String.valueOf(IDCuenta));
+            //asociar.asociarCuenta(CodigoCliente,String.valueOf(IDCuenta));
 
             conexion.commit();
 

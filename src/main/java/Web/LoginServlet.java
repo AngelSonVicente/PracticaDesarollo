@@ -42,6 +42,7 @@ public class LoginServlet extends HttpServlet {
 
                 }
                 if (usuarioo.getTipoUsuario() == 3) {
+                    session.setAttribute("Cliente",usuarioo);
                     response.sendRedirect("ModuloUsuario.jsp");
                 }
 
