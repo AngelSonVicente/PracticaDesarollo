@@ -44,6 +44,38 @@ public class CuentaDAO {
         return usuario;
     }
 
+    public static Cuenta getCuentaaAsociar(String CodigoCuenta, String CodigoUsuario) {
+        Cuenta usuario = new Cuenta();
+
+        String sql = "SELECT a.codigo, a.codigoCliente, b.nombre FROM cuenta a INNER JOIN usuario b ON a.codigoCliente = b.codigo WHERE a.codigo = ? AND a.codigoCliente != ?";
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+
+            preparedStatement.setString(1, CodigoCuenta);
+            preparedStatement.setString(2, CodigoUsuario);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int codigo = resultSet.getInt("codigo");
+                int CodigoCliente = resultSet.getInt("codigoCliente");
+                String nombre = resultSet.getString("nombre");
+
+                System.out.println(nombre);
+
+                Cuenta OBJ = new Cuenta(codigo, CodigoCliente, nombre, null, 0);
+                usuario = OBJ;
+            }
+
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println("Error al realizar la consulta: " + e.getMessage());
+        }
+
+        return usuario;
+    }
+
     public static CuentaPDF getCuentaCompleta(String Codigo) {
         CuentaPDF cuenta = new CuentaPDF();
 

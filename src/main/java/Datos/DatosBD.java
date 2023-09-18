@@ -20,17 +20,14 @@ public class DatosBD {
     public Usuario IsLogin(String ContraIngresada, String UsuarioIngresado) {
         String ContraEncriptada= util.Encriptar(ContraIngresada);
 
-        System.out.println(ContraEncriptada+ "ContraIngresada ");
 
         String Contra= buscar.ObtenerContra(UsuarioIngresado);
 
-        System.out.println(Contra+ "Contra de a deveras");
 
         Usuario usuario = new Usuario();
 
         if(ContraEncriptada.equals(Contra)){
 
-            System.out.println("si ingreso, esta retornando un usuario");
             return UsuarioDAO.getUsuario(UsuarioIngresado);
 
 

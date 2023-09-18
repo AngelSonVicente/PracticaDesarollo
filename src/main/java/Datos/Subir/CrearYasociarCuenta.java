@@ -26,7 +26,7 @@ public class CrearYasociarCuenta {
 
         try {
             conexion.setAutoCommit(false);
-            AsociarCuenta asociar = new AsociarCuenta(conexion);
+          //  AsociarCuenta asociar = new AsociarCuenta(conexion);
             CrearCuenta crearcuenta = new CrearCuenta(conexion);
 
             int IDCuenta = crearcuenta.crearCuenta(CodigoCliente,FechaCreacion) ;

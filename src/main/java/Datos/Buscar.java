@@ -8,30 +8,7 @@ import java.sql.SQLException;
 public class Buscar {
     static Connection conexion = ConexionBD.getInstancia().getConexion();
 
-    /*
-    public String getDato(String tabla,String columna, String DatoaBucar,String BuscarCon){
 
-        String Nombre="";
-
-        String sql ="SELECT * FROM "+tabla+" WHERE "+columna+" = '" +BuscarCon+"'";
-
-        try{
-            var statement = conexion.createStatement();
-            var resultset = statement.executeQuery(sql);
-
-            if(resultset.next()){
-                Nombre = resultset.getString(DatoaBucar);
-            }
-
-            statement.close();
-            resultset.close();
-
-        }catch(SQLException e){
-            System.out.println("Error al realizar la consulta"+ e.getMessage());
-        }
-        return Nombre;
-    }
-    */
 
     public String getDato(String tabla, String columna, String DatoaBuscar, String BuscarCon) {
         String Nombre = "";
@@ -58,7 +35,38 @@ public class Buscar {
         return Nombre;
     }
 
+    public boolean PuedeSolicitarAsociar(String CodigoCuenta, String CodigoUsuario) {
+        boolean puede = true;
 
+        String sql = "SELECT COUNT(*) AS cantidad_solicitudes FROM solicitudasociacion WHERE codCliente = ? AND codCuenta = ?";
+
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, CodigoUsuario);
+            preparedStatement.setString(2, CodigoCuenta);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int cantidad = resultSet.getInt("cantidad_solicitudes");
+                System.out.println("cantidad de solicitudes: " + cantidad);
+                if (cantidad >= 3) {
+                    puede = false;
+
+                }
+
+            }
+
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+
+            System.out.println("Error al realizar la consulta" + e.getMessage());
+        }
+
+        System.out.println(sql);
+        return puede;
+    }
 
 
     public boolean ExisteUsuario(String id) {
@@ -74,7 +82,7 @@ public class Buscar {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                existe=true;
+                existe = true;
             }
 
             preparedStatement.close();
@@ -100,7 +108,7 @@ public class Buscar {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                existe=true;
+                existe = true;
             }
 
             preparedStatement.close();
@@ -114,13 +122,39 @@ public class Buscar {
         return existe;
     }
 
+    public boolean CuentaAsociada(String CodigoCuenta, String CodigoUsuario) {
+        boolean existe = false;
 
-        public String ObtenerContra( String usuario){
-            String dato="";
-        dato=getDato("usuario","codigo","password",usuario);
+        String sql = "SELECT * FROM cuentaasociada WHERE codCliente = ? AND codCuenta = ?";
+
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, CodigoUsuario);
+            preparedStatement.setString(2, CodigoCuenta);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                existe = true;
+            }
+
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println("Error al realizar la consulta" + e.getMessage());
+
+        }
+
+        System.out.println(sql);
+        return existe;
+    }
+
+    public String ObtenerContra(String usuario) {
+        String dato = "";
+        dato = getDato("usuario", "codigo", "password", usuario);
         return dato;
 
     }
-    
+
 
 }
