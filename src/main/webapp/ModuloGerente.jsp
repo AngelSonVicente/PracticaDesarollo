@@ -22,6 +22,7 @@
     <a href="CrearUsuario.jsp">Crear Usuario</a></br></br>
     <a href="CrearCuenta.jsp">Crear Cuenta</a></br></br>
     <a href="EditarInformacion.jsp">Actualizar Informacion Clientes y Cajeros</a></br></br>
+    <a href="ReportesAdministrador.jsp">Reportes</a></br></br>
 
 
 

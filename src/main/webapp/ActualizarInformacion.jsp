@@ -1,11 +1,5 @@
 <%@ page import="DatosBD.UsuarioT2" %>
-<%@ page import="DatosBD.UsuarioT3" %><%--
-  Created by IntelliJ IDEA.
-  User: MSI
-  Date: 14/09/2023
-  Time: 10:00 p. m.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="DatosBD.UsuarioT3" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

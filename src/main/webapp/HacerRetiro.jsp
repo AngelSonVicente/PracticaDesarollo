@@ -1,11 +1,5 @@
 <%@ page import="DatosBD.CuentaPDF" %>
-<%@ page import="java.util.Base64" %><%--
-  Created by IntelliJ IDEA.
-  User: MSI
-  Date: 16/09/2023
-  Time: 01:24 a. m.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.Base64" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -39,7 +33,7 @@ DPI escaneado :</br></br>
 </object>
 </br></br></br></br>
 <form action="HacerRetiro" method="post">
-    Ingrese la cantidad ha depositar
+    Ingrese la cantidad ha Retirar
     <input type="text" name="Monto" >
     <input type="hidden" name="CodigoCuenta" value="<%=cuenta.getCodigoCuenta()%>">
     <input type="submit" value="Realizar Retiro">
