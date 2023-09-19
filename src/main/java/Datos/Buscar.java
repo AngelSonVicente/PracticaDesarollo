@@ -1,5 +1,7 @@
 package Datos;
 
+
+import DatosBD.Limites;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -66,6 +68,39 @@ public class Buscar {
 
         System.out.println(sql);
         return puede;
+    }
+
+    public static Limites getLimite(String codigo) {
+        Limites limite=new Limites();
+
+        String sql = "SELECT * FROM limite WHERE id = ?";
+
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, codigo);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int Codigo = resultSet.getInt("id");
+                String nombre = resultSet.getString("nombre");
+                float valor = resultSet.getFloat("valor");
+
+                limite.setCodigo(Codigo);
+                limite.setNombre(nombre);
+                limite.setValor(valor);
+
+            }
+
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+
+            System.out.println("Error al realizar la consulta" + e.getMessage());
+        }
+
+        System.out.println(sql);
+        return limite;
     }
 
 
@@ -136,6 +171,36 @@ public class Buscar {
 
             if (resultSet.next()) {
                 existe = true;
+            }
+
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println("Error al realizar la consulta" + e.getMessage());
+
+        }
+
+        System.out.println(sql);
+        return existe;
+    }
+
+    public  static boolean EstaenTurno(int CodigoEmpleado) {
+        boolean existe = false;
+
+        String sql = "SELECT COUNT(*) AS cantidad FROM empleado e INNER JOIN turno t ON e.idTurno = t.id WHERE e.codigoUsuario = ? AND CURTIME() BETWEEN t.horaEntrada AND t.horaSalida;";
+
+        try {
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setInt(1, CodigoEmpleado);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int cantidad = resultSet.getInt("cantidad");
+                if (cantidad > 0) {
+                existe=true;
+                }
+
             }
 
             preparedStatement.close();

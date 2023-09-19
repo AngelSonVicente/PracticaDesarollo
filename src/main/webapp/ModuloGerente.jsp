@@ -1,4 +1,5 @@
-<%@ page import="DatosBD.Usuario" %><%--
+<%@ page import="DatosBD.Usuario" %>
+<%@ page import="Datos.Buscar" %><%--
   Created by IntelliJ IDEA.
   User: MSI
   Date: 13/09/2023
@@ -14,14 +15,19 @@
 <%
     Usuario gerente = (Usuario) session.getAttribute("Gerente");
 
+    boolean turno = Buscar.EstaenTurno(gerente.getCodigo());
 %>
 <h1>Modulo Gerente</h1>
 
 <h2>
 <br>
+   <%if(turno){%>
+    <a href="CambiarLimite.jsp">Cambiar Limites de reportes</a></br></br>
     <a href="CrearUsuario.jsp">Crear Usuario</a></br></br>
     <a href="CrearCuenta.jsp">Crear Cuenta</a></br></br>
     <a href="EditarInformacion.jsp">Actualizar Informacion Clientes y Cajeros</a></br></br>
+   <%}%>
+
     <a href="ReportesAdministrador.jsp">Reportes</a></br></br>
 
 

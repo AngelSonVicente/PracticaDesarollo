@@ -1,4 +1,5 @@
-<%--
+<%@ page import="DatosBD.Usuario" %>
+<%@ page import="Datos.Buscar" %><%--
   Created by IntelliJ IDEA.
   User: MSI
   Date: 15/09/2023
@@ -13,10 +14,20 @@
 <body>
 <h1>Modulo Cajero</h1>
 
+<%
+    Usuario gerente = (Usuario) session.getAttribute("Cajero");
+
+    boolean turno = Buscar.EstaenTurno(gerente.getCodigo());
+%>
+
 <h2>
   <br>
-  <a href="Depositar.jsp">Hacer Deposito</a></br></br>
+
+    <%if (turno){%>
+    <a href="Depositar.jsp">Hacer Deposito</a></br></br>
   <a href="Retirar.jsp">Hacer Retiro</a></br></br>
+    <%}%>
+
   <a href="ReportesCajero.jsp">Reportes</a></br></br>
 
 
