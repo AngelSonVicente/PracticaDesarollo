@@ -11,9 +11,7 @@
     <a href="Transferencias.jsp">Hacer Transferencias </a></br></br>
     <a href="CrearSolicitudAsociacion.jsp">Crear Solicitud de asociacion de cuenta </a></br></br>
     <a href="SolicitudesAsociacion.jsp">Ver solicitudes de asociacion </a></br></br>
-
-
-
+    <a href="ReportesCliente.jsp">Reportes </a></br></br>
 
 </h2>
 
