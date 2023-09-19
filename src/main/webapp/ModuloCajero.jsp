@@ -17,6 +17,7 @@
   <br>
   <a href="Depositar.jsp">Hacer Deposito</a></br></br>
   <a href="Retirar.jsp">Hacer Retiro</a></br></br>
+  <a href="ReportesCajero.jsp">Reportes</a></br></br>
 
 
 

@@ -36,7 +36,6 @@ public class ReportesAdministrador {
 
                 CambioRealizado OBJ = new CambioRealizado(codigo,Codigogerente,codusuario,Nombre,fecha,hora);
                 Listar.add(OBJ);
-                System.out.println(OBJ.toString());
             }
 
             preparedStatement.close();
@@ -71,7 +70,6 @@ public class ReportesAdministrador {
 
                 ClientesTransaccionesMayores OBJ = new ClientesTransaccionesMayores(codigoT,CodigoCuenta,codusuario,codigoCajero,monto,Nombre,fecha,hora);
                 Listar.add(OBJ);
-                System.out.println(OBJ.toString());
             }
 
             preparedStatement.close();
